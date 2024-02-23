@@ -69,7 +69,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
           </select>
         </div>
         <div className="flex flex-col mb-5">
-          <label htmlFor="discription" className="mb-2">
+          <label htmlFor="priority" className="mb-2">
             Pirority
           </label>
           <select

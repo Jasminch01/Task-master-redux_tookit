@@ -1,7 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  task: [],
-  userSpicificTask : []
+  task: [
+    {
+      id: 1,
+      status : 'panding',
+      name: 'dfasdf',
+      discription: 'asdfsdaf',
+      date: '2024-02-23',
+      assignto: 'jesmin chakma',
+      priority: 'low'
+    }
+  ],
+  userSpicificTask: [],
 };
 
 const taskSlice = createSlice({
@@ -20,19 +30,22 @@ const taskSlice = createSlice({
         });
       }
     },
-    removeTask: (state, {payload}) => {
+    removeTask: (state, { payload }) => {
       state.task = state.task.filter((item) => item.id !== payload);
     },
-    updateStatus : (state, {payload}) => {
-       const targetedTask =  state.task.find((item) => item.id === payload.id)
-       targetedTask.status = payload.status;
+    updateStatus: (state, { payload }) => {
+      const targetedTask = state.task.find((item) => item.id === payload.id);
+      targetedTask.status = payload.status;
     },
-    userTasks : (state, {payload}) => {
-      state.userSpicificTask = state.task.filter(item => item.assignto === payload)
-    }
+    userTasks: (state, { payload }) => {
+      state.userSpicificTask = state.task.filter(
+        (item) => item.assignto === payload
+      );
+    },
   },
 });
 
-export const { addTask, removeTask, updateStatus, userTasks } = taskSlice.actions;
+export const { addTask, removeTask, updateStatus, userTasks } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
